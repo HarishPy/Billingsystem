@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Hour Basic{% endblock %}
+
+{% block content %}
+<form method="POST" action='/hourbasic'>
+    <h3 align="center">Hour Basic</h3>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="name" class="form-control" id="name" name="name" placeholder="Enter Name" style="text-transform: capitalize;">
+    </div>
+    <div class="form-group">
+        <label for="time">Time</label>
+        <input type="text" class="form-control" id="time" name="time" placeholder="Enter Time">
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" id="price" name="price" placeholder="Enter Price">
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" id="category" name="category" >
+            <option value="" disabled selected>Select Category</option>
+            <option value="bike">Bike</option>
+            <option value="car">Car</option>
+            <option value="scooter">Scooter</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="payment">Payment Type</label>
+        <select class="form-control" id="payment" name="payment" >
+            <option value="" disabled selected>Select Payment Type</option>
+            <option value="cash">Cash</option>
+            <option value="qr">QR</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Enter</button>
+</form>
+{% endblock %}

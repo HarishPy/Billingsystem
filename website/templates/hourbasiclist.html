@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}HourBasicList{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Hour Basic List</h1>
+    <form method="POST" action='/hourbasiclist'>
+        <input type="text" name="search" placeholder="Search by name" value="{{ search_query or '' }}">
+        <button type="submit">Search</button>
+    </form>
+    <ul class="list-group">
+        <table border="1">
+            <tr>
+                <th>Bill No.</th>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Price</th>
+                <th>Payment</th>
+                <th>Category</th>
+            </tr>
+            {% for customer in customer %}
+            <tr>
+                <td>{{ customer.id }}</td>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.time }}</td>
+                <td>{{ customer.price }}</td>
+                <td>{{ customer.payment }}</td>
+                <td>{{ customer.category }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </ul>
+</div>
+{% endblock %}

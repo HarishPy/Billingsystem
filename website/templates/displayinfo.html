@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Display Info{% endblock %}
+
+{% block content %}
+<link href="https://printjs-4de6.kxcdn.com/print.min.css" rel="stylesheet" type="text/css">
+<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+
+<body>
+    <div id="print-div">
+        <h3 align="center">Panchakanya Driving Center</h3>
+        </br>
+        <p>Name : {{ name }}</p>
+        <p>Time : {{ time }}</p>
+        <p>Price : {{ price }}</p>
+        <p>Category : {{ category }}</p>
+        <p>Payment Type : {{ payment }}</p>
+        <p>Date: {{ current_datetime.strftime('%Y-%m-%d') }}</p>
+        <p>Time: {{ current_datetime.strftime('%H:%M:%S') }}</p>
+        <p>Bill No: {{ bill_number }}</p>
+    </div>
+    <button onclick="printBill()">Print</button>
+    <style>
+        p {
+            margin: 0px;
+        }
+
+        @media print {
+            p {
+                font-size: 16px;
+                margin: 0px;
+            }
+        }
+    </style>
+    <script>
+        function printBill() {
+            printJS('print-div', 'html')
+        }
+    </script>
+</body>
+{% endblock %}
+

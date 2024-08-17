@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}RegisteredList{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Students List</h1>
+    <form method="POST" action='/registeredlist'>
+        <input type="text" name="search" placeholder="Search by name" value="{{ search_query or '' }}">
+        <button type="submit">Search</button>
+    </form>
+    <ul class="list-group">
+        <table border="1">
+            <tr>
+                <th>Bill No.</th>
+                <th>Name</th>
+                <th>Days</th>
+                <th>Total Price</th>
+                <th>Remaining Price</th>
+                <th>Paid Price</th>
+                <th>Category</th>
+                <th>Payment</th>
+                <th>Course</th>
+            </tr>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.days }}</td>
+                <td>{{ student.totalprice }}</td>
+                <td>{{ student.remainprice }}</td>
+                <td>{{ student.paidprice }}</td>
+                <td>{{ student.category }}</td>
+                <td>{{ student.payment }}</td>
+                <td>{{ student.course }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </ul>
+</div>
+{% endblock %}

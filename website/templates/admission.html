@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Student Admission{% endblock %}
+
+{% block content %}
+<form method="POST" action='/admission'>
+    <h3 align="center">Student Admission</h3>
+    <div class="form-group">
+        <label for="name">Student Name</label>
+        <input type="name" class="form-control" id="name" name="name" placeholder="Enter Name" style="text-transform: capitalize;">
+    </div>
+    <div class="form-group">
+        <label for="days">Days</label>
+        <input type="text" class="form-control" id="days" name="days" placeholder="Enter Days">
+    </div>
+    <div class="form-group">
+        <label for="totalprice">Total Price</label>
+        <input type="text" class="form-control" id="totalprice" name="totalprice" placeholder="Enter Total Price">
+    </div>
+    <div class="form-group">
+        <label for="paidprice">Paid Price</label>
+        <input type="text" class="form-control" id="paidprice" name="paidprice" placeholder="Enter Paid Price">
+    </div>
+    <div class="form-group">
+        <label for="remainprice">Remaining Price</label>
+        <input type="text" class="form-control" id="remainprice" name="remainprice" placeholder="Enter Remaining Price" readonly>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" id="category" name="category">
+            <option value="" disabled selected>Select Category</option>
+            <option value="bike">Bike</option>
+            <option value="car">Car</option>
+            <option value="scooter">Scooter</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="payment">Payment Type</label>
+        <select class="form-control" id="payment" name="payment">
+            <option value="" disabled selected>Select Payment Type</option>
+            <option value="cash">Cash</option>
+            <option value="qr">QR</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="course">Course Type</label>
+        <select class="form-control" id="course" name="course">
+            <option value="" disabled selected>Select Course Type</option>
+            <option value="basic">Basic Course</option>
+            <option value="trial">Trial Course</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Enter</button>
+</form>
+
+<script>
+    document.getElementById('totalprice').addEventListener('input', calculateRemainingPrice);
+    document.getElementById('paidprice').addEventListener('input', calculateRemainingPrice);
+
+    function calculateRemainingPrice() {
+        const totalPrice = parseFloat(document.getElementById('totalprice').value) || 0;
+        const paidPrice = parseFloat(document.getElementById('paidprice').value) || 0;
+        const remainingPrice = totalPrice - paidPrice;
+        document.getElementById('remainprice').value = remainingPrice.toFixed(2);
+    }
+</script>
+{% endblock %}
